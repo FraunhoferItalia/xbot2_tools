@@ -73,13 +73,13 @@ bool Monitor::Impl::publish()
   auto now = XBot::chrono::system_clock::now();
   auto now_ts = XBot::chrono::duration_chrono_to_timespec(now.time_since_epoch());
   msg.header.stamp.sec = now_ts.tv_sec;
-  msg.header.stamp.nsec = now_ts.tv_sec;
+  msg.header.stamp.nsec = now_ts.tv_nsec;
 
   names_msg.header.stamp.sec = now_ts.tv_sec;
-  names_msg.header.stamp.nsec = now_ts.tv_sec;
+  names_msg.header.stamp.nsec = now_ts.tv_nsec;
 
   values_msg.header.stamp.sec = now_ts.tv_sec;
-  values_msg.header.stamp.nsec = now_ts.tv_sec;
+  values_msg.header.stamp.nsec = now_ts.tv_nsec;
 
   // std::cout << msg.statistics.size() <<std::endl;
   // std::cout << _vars.size() <<std::endl;
