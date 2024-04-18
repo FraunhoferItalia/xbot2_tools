@@ -5,6 +5,24 @@
 
 using namespace XBot::tools;
 
+template <typename T>
+struct Data;
+
+template <>
+struct Data<double>
+{
+    Data(const double& var);
+    const double * data;
+};
+
+template <>
+struct Data<Eigen::VectorXd>
+{
+    Data(const Eigen::VectorXd& var);
+    const Eigen::VectorXd * data;
+    int size;
+};
+
 class Monitor::Impl
 {
 
@@ -19,6 +37,8 @@ public:
     bool publish();
 
 private:
+
+
 
     PublisherPtr<xbot_msgs::CustomState> _pub;
 

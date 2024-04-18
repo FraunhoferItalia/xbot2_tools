@@ -1,5 +1,7 @@
 find_package(xbot2 REQUIRED)
 
+## monitor
+
 add_library(monitor SHARED src/monitor.cpp)
 
 set_target_properties(monitor PROPERTIES OUTPUT_NAME xbot2_tools_monitor)
@@ -19,7 +21,15 @@ install(TARGETS monitor
     EXPORT ${PROJECT_NAME}Targets
 )
 
-# install headers
+
+## trajectory plugin
+
+add_xbot2_plugin(trajectory_plugin src/trajectory_plugin.cpp)
+
+install(TARGETS trajectory_plugin DESTINATION lib)
+
+
+## install headers
 install(DIRECTORY include/xbot2_tools
     DESTINATION include
     )
