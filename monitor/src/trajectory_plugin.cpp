@@ -30,6 +30,11 @@ bool TrajectoryPlugin::on_initialize()
     {
         _trj_map.at(_robot->getDeviceInstance<Hal::JointBase>(jname)).freq_min_hz = f;
     }
+    
+    for(auto [jname, f] : freq_max)
+    {
+        _trj_map.at(_robot->getDeviceInstance<Hal::JointBase>(jname)).freq_max_hz = f;
+    }
 
     for(auto [jname, t] : period)
     {
